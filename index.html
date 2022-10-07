@@ -2,13 +2,41 @@
 <html> 
 
 <head>
+    <link href="style.css" rel="stylesheet">
+    <script src="interactive.js"></script>
     <meta charset=utf-8/>
+    <title>hw-04</title>
 </head>
 
 
 <body>
 
+    <div>
+        <h1 id="heee">hw-04: Event Handling</h1>
+    </div>
 
+
+    <div class="row">
+        <div class="col1">
+            <svg width="500" height="500">
+                <line x1="0" y1="0" x2="0" y2="300"/>
+                <line x1="0" y1="300" x2="300" y2="300"/>
+                <circle class="unsel" id="swag" cx="30" cy="240" r="10"/>
+                <circle class="unsel" cx="60" cy="180" r="10"/>
+                <circle class="unsel" cx="180" cy="240" r="10"/>
+                <circle class="unsel" cx="270" cy="30" r="10"/>
+
+            </svg>
+
+            
+        </div>
+        <div class="col2">
+            <div id="lastClicked">
+                
+            </div>
+        </div>
+    </div>
+    
 </body>
 
 </html>
