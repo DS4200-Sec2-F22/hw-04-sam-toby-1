@@ -1,16 +1,9 @@
+//Wrapped in onload to load the JS script after the html has loaded
+//This is done to ensure no references are null.
 window.onload=function(){
 
+    
     let points = document.getElementsByClassName("unsel");
-
-
-
-    console.log('Random Text');
-    console.log(points.length);
-
-    function clickHead() {
-        let points = document.getElementsByClassName("unsel");
-        console.log(points.length);
-    }
 
     function clickpt() {
         let xval = this.cx;
@@ -28,9 +21,27 @@ window.onload=function(){
         }
     }
 
-    document.getElementById("heee").addEventListener('click', clickHead);
-    // document.getElementById("swag").addEventListener('click', clickpt);
+    function createPoint() {
+        //Inserts new <circle> tag based on inputs
+        let xCoord = document.getElementById('xSelect');
+        let yCoord = document.getElementById('ySelect');
+        let prevText = document.getElementById("svgCanvas").innerHTML;
+        let xval1 = parseInt(xCoord.options[xCoord.selectedIndex].text);
+        let yval1 = parseInt(yCoord.options[yCoord.selectedIndex].text);
+        let newCirc = '<circle class="unsel" cx="' + (xval1 * 30) + '" cy="' + (300 - (yval1 * 30)) + '" r="10"/>';
+        let fullImg = prevText + newCirc;
+        document.getElementById('svgCanvas').innerHTML = fullImg;
 
+        //Readds the event listener to the new circle
+        for (var i = 0; i < points.length; i++) {
+            points[i].addEventListener('click', clickpt);
+        }
+
+    }
+
+    document.getElementById("inputButton").addEventListener('click', createPoint);
+ 
+    
     for (var i = 0; i < points.length; i++) {
         points[i].addEventListener('click', clickpt);
     }
